@@ -1,21 +1,54 @@
 "resource/layout/settingssubstreaming.layout" {
 
-	layout {
-		place { control=DescriptionLabel dir=down width=max }
-		place { control=RemoteClientList start=DescriptionLabel dir=down width=max height=120 y=20 }
+	layout
+	{
+		place
+		{
+			control="DescriptionLabel,EnableStreaming,RemoteClientList"
+			dir=down
+			align=top
+			width=max
+			margin-left=20
+			margin-right=20
+			margin-top=20
+			spacing=10
+		}
+		
+		place { start="RemoteClientList" control="Pair" dir=down margin-top=10 width=155 }
+		place { start="Pair" control="Unpair" dir=right margin-left=15 width=155 }
+		place { start="Unpair" control="SetPIN" dir=right margin-left=15 width=155 }
 
-		place { control=EnableStreaming start=RemoteClientList dir=down width=max y=10 }
-
-		place { control=SetPin start=EnableStreaming dir=down y=10 }
-		place { control=AdvancedHostOptions start=SetPin dir=down y=0 }
-		place { control=AdvancedClientOptions start=AdvancedHostOptions dir=down y=0 }
-
-		place { control=ClientLabel start=AdvancedClientOptions dir=down width=max y=30 }
-
-		place { control=QualityFast start=ClientLabel dir=down y=5 }
-		place { control=QualityBalanced start=QualityFast dir=right margin-left=10 }
-		place { control=QualityBeautiful start=QualityBalanced dir=right margin-left=10 }
-
-		place { control=HostLabel,HostDivider,ClientDivider,SupportInformationLabel height=0 width=0 }
+		place
+		{
+			start="Pair"
+			control="P2PScopeLabel"
+			dir=down
+			width=400
+			margin-top=15
+		}
+		place
+		{
+			start="P2PScopeLabel"
+			control="P2PScope"
+			dir=down
+			width=max
+			height=24
+			margin-right=20
+			margin-top=4
+		}
+		
+		place { start="P2PScope" control="HostDivider" dir=down margin-top=15 width=475 }
+		place { start="HostDivider" control="HostLabel" dir=down margin-top=10 width=max }
+		place { start="HostLabel" control="UnsupportedPlatform" dir=down margin-top=10 width=max }
+		place { start="HostLabel" control="AdvancedHostOptions" dir=down margin-top=10 }
+		
+		place { start="HostDivider" control="ClientDivider" dir=down margin-top=70 width=475 }
+		place { start="ClientDivider" control="ClientLabelLocal" dir=down margin-top=10 width=max }
+		place { start="ClientDivider" control="ClientLabelRemote" dir=down margin-top=10 width=max }
+		place { start="ClientDivider" control="QualityFast" dir=down margin-top=30 width=100 }
+		place { start="QualityFast" control="QualityBalanced" dir=right margin-left=10 width=100 }
+		place { start="QualityBalanced" control="QualityBeautiful" dir=right margin-left=10 width=100 }
+		place { start="QualityFast" control="AdvancedClientOptions" dir=down margin-top=10 }
+		place { start="AdvancedClientOptions" control="SupportInformationLabel" dir=right align=right margin-top=20 margin-right=20 }
 	}
 }

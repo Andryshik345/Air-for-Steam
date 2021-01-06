@@ -1,28 +1,60 @@
 "Resource/layout/settingssubstreaming_advanced_host.layout" {
 
-	layout {
-		region { name=header height=50 width=max }
-			place [!$OSX] { control=frame_close height=22 width=22 y=13 align=right margin-right=20 }
-			place [$OSX] { control=frame_close height=22 width=22 y=13 align=left margin-left=20 }
-			place { control=frame_captiongrip margin=2 width=max height=50 }
+	layout
+	{
+		region { name="buttons" width=max height=36 align="bottom" }
 
-		region { name=body height=max width=max y=50 margin-bottom=50 }
-		region { name=box height=max width=max region=body margin-left=26 margin-right=26 }
-			place { control=DescriptionLabel region=box width=max}
-			place {
-				control=ChangeDesktopResolution,DynamicallyAdjustResolution,EnableCaptureNVFBC,EnableHardwareEncoding,EnableHardwareEncodingNVIDIA,EnableHardwareEncodingAMD,EnableHardwareEncodingIntel,EnableTrafficPriorityLabel,EnableTrafficPriority
-				region=box
-				start=DescriptionLabel
-				dir=down
-				y=10
-				width=max
-			}
-			place { control=SoftwareEncodingThreadsLabel region=box start=EnableHardwareEncodingIntel dir=down y=20 width=max }
-			place { control=SoftwareEncodingThreads region=box start=SoftwareEncodingThreadsLabel dir=down y=5 width=max }
-			place { control=EnableTrafficPriorityLabel region=box start=SoftwareEncodingThreads dir=down y=30 width=max }
-			place { control=EnableTrafficPriority region=box start=EnableTrafficPriorityLabel dir=down y=10 width=max }
-
-		region { name=buttons align=bottom height=50 }
-			place { control=OKButton,SupportInformationLabel region=buttons align=right spacing=10 y=10 margin-right=26 }
+		place
+		{
+			control="DescriptionLabel,HostPlayAudioAlways,ChangeDesktopResolution,DynamicallyAdjustResolution,EnableCaptureNVFBC,EnableHardwareEncoding"
+			dir=down
+			align=top
+			width=max
+			margin-left=20
+			margin-right=20
+			margin-top=40
+			spacing=0
+		}
+		place
+		{
+			control="EnableHardwareEncodingNVIDIA,EnableHardwareEncodingAMD,EnableHardwareEncodingIntel,EnableTrafficPriorityLabel,EnableTrafficPriority"
+			dir=down
+			align=top
+			width=max
+			margin-left=45
+			margin-right=20
+			margin-top=210
+			spacing=0
+		}
+		place
+		{
+			control="SoftwareEncodingThreadsLabel,SoftwareEncodingThreads"
+			dir=down
+			align=top
+			width=max
+			margin-left=20
+			margin-right=20
+			margin-top=315
+			spacing=2
+		}
+		place
+		{
+			start="SoftwareEncodingThreads"
+			control="EnableTrafficPriorityLabel,EnableTrafficPriority"
+			dir=down
+			align=top
+			width=max
+			margin-right=20
+			margin-top=10
+			spacing=0
+		}
+		
+		place { control="SupportInformationLabel" region="buttons"
+						margin-left=20 margin-top=0
+						margin-bottom=2 spacing=10 }
+		place { control="OKButton" region="buttons"
+		        width=92 height=25 align=right
+						margin-right=10 margin-top=0
+						margin-bottom=2 spacing=10 }
 	}
 }

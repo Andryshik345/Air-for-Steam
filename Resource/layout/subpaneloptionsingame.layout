@@ -1,33 +1,56 @@
 "Resource/layout/subpaneloptionsingame.layout" {
 
-	layout {
-		place {
-			control=EnableOverlayCheck,EnableSCTenFootOverlayCheck,EnableVRDesktopGameTheaterCheck
-			dir=down width=max margin-top=-4
-		}
+	layout
+	{
+		region { name=box margin-top=10 margin-bottom=20 margin-left=20 margin-right=20 width=max height=max }
+		region { name=top region=box margin-top=10 }
+		region { name=topleft region=top y=120 width=255 margin-right=20 }
+		region { name=topright region=top x=263 width=235 y=121}
+		
+		region { name=bottom region=box y=310 }
+		region { name=bottomleft region=bottom width=255 margin-right=20 }
+		region { name=bottomright region=bottom x=263 width=255 }
+		
+		place { controls=TitleLabel region=top }
+		place { controls=DescriptionLabel width=max region=top start=TitleLabel dir=down margin-top=8 }
+		place { controls=EnableOverlayCheck region=top start=DescriptionLabel dir=down height=20 margin-top=8 }
+		place [!$OSX] { controls=EnableSCTenfootOverlayCheck region=top start=EnableOverlayCheck dir=down height=20 }
+		place [!$OSX&&!$LINUX] { controls=EnableVRDesktopGameTheaterCheck region=top start=EnableSCTenfootOverlayCheck dir=down height=20 }
+		place { controls=HotKeySelectorLabel,HotKeySelector dir=down spacing=5 width=max region=topleft y=10 }
+		
+		place { controls=ShowIngameFPSLabel,ShowIngameFPSCombo,ShowIngameFPSContrastCheck dir=down spacing=5 start=HotKeySelector margin-top=38 width=max region=topleft }
+			
+		place { controls=ScreenshotLabel region=topright y=10 }
+		place { controls=ScreenshotHotKeySelector,SetScreenshotFolderButton 
+			dir=down 
+			start=ScreenshotLabel
+			margin-top=4
+			spacing=5
+			width=max
+			height=22
+			region=topright }
+		
+		place { control=Divider1 region=bottom width=max }
+		
+		place { control=ScreenshotActionLabel region=topright start=Divider1 dir=down margin-top=10 }
+		place { controls=ScreenshotNotifyCheck,ScreenshotPlaySoundCheck,ScreenshotSaveUncompressedCheck dir=down start=ScreenshotActionLabel
+			margin-top=6 margin-left=10 height=22 width=max region=topright }
 
-		place { control=PingRateLabel					dir=down width=max start=EnableVRDesktopGameTheaterCheck y=15 }
-		place { control=PingRateCombo					dir=down width=max start=PingRateLabel y=5 }
+		place { controls="TextFilterLabel" region=bottomleft start=Divider1 margin-top=10 width=max dir=down }
+		place { controls="TextFilterStatus" region=bottomleft start=TextFilterLabel margin-top=10 width=235 dir=down height=25 }
+		place { controls="TextFilterUpdateSettingURL" region=bottomleft start=TextFilterStatus margin-top=10 width=235 dir=down }			
 
-		place { control=ShowIngameFPSLabel				dir=down start=PingRateCombo y=20 }
-		place { control=ShowIngameFPSCombo				dir=down width=max start=ShowIngameFPSLabel y=5 }
 
-		place { control=ShowIngameFPSContrastCheck		dir=down start=ShowIngameFPSCombo y=20 }
+		place { control=Divider2 region=bottom margin-top=100 width=max }
 
-		place { control=HotKeySelectorLabel				dir=down start=ShowIngameFPSContrastCheck y=30 }
-		place { control=HotKeySelector					dir=down width=max start=HotKeySelectorLabel y=5 }
+		place { controls="ShareIPNetworkingLabel" region=bottomleft start=Divider2 margin-top=15 width=235 dir=down }
+		place { controls="ShareIPNetworkingInfo" region=bottomleft start=ShareIPNetworkingLabel margin-top=5 width=235 dir=down }		
+		place { controls="ShareIPNetworkingURL" region=bottomleft start=ShareIPNetworkingInfo margin-top=5 width=235 dir=down }
+		place { controls="ShareIPNetworkingCombo" region=bottomleft start=ShareIPNetworkingURL margin-top=16 width=235 dir=down height=25}
+		
+		place { controls="PingRateLabel" region=bottomright start=Divider2 margin-top=15 width=235 dir=down }
+		place { controls="PingRateInfo" region=bottomright start=PingRateLabel margin-top=5 width=235 dir=down }		
+		place { controls="PingRateCombo" region=bottomright start=PingRateInfo margin-top=16 width=235 dir=down height=25 }
 
-		place { control=ScreenshotLabel					dir=down start=HotKeySelector y=30 }
-		place { control=ScreenshotHotKeySelector		dir=down width=max start=ScreenshotLabel y=5 }
-
-		place { control=ScreenshotActionLabel			dir=down start=ScreenshotHotKeySelector y=30 }
-		place {
-			control=ScreenshotNotifyCheck,ScreenshotPlaySoundCheck,ScreenshotSaveUncompressedCheck
-			dir=down start=ScreenshotActionLabel y=5
-		}
-
-		place { control=SetScreenshotFolderButton		dir=down start=ScreenshotSaveUncompressedCheck y=10 }
-
-		place { control=Divider1,DescriptionLabel,TitleLabel,PingRateInfo height=0 width=0 }
 	}
 }
